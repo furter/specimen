@@ -1,0 +1,109 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+div {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+a, a:visited, a:hover, a:active, a:link {
+    color: black;
+    text-decoration: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: normal;
+}
+
+@font-face {
+    font-family:'Asap';
+    src: url("font/Asap-Regular.ttf");
+    font-style: normal;
+}
+
+@font-face {
+    font-family:'Cabin';
+    src: url("font/Cabin-Medium.ttf");
+    font-style: normal;
+}
+
+
+body {
+    font-family: 'Asap';
+    font-size: 166px;
+    background-color:blue;
+}
+
+.arrowright {
+    font-family: 'Cabin';
+    font-size: 20px;
+    letter-spacing: 3px;
+    top: 50%;
+    margin-top: -12px;
+    position: fixed;
+    right: 15px;
+    color: white;
+}
+
+.arrowleft {
+    font-family: 'Cabin';
+    font-size: 20px;
+    letter-spacing: 3px;
+    top: 50%;
+    margin-top: -12px;
+    position: fixed;
+    left: 15px;
+    color: white;
+}
+
+.arrowup {
+    font-family: 'Cabin';
+    font-size: 20px;
+    letter-spacing: 3px;
+    left: 50%;
+    margin-left: -16px;
+    position: fixed;
+    bottom: 15px;
+    color: white;
+    z-index: 5;
+}
+
+.arrowleftcorner {
+    font-family: 'Cabin';
+    font-size: 20px;
+    letter-spacing: 3px;
+    position: fixed;
+    top: 50px;
+    left: 15px;
+    color: black;
+    z-index: 5;
+    -webkit-transform: rotate(-37deg);
+    -moz-transform: rotate(-37deg);
+    -o-transform: rotate(-37deg);
+}
+
+.arrowrightcorner {
+    font-family: 'Cabin';
+    font-size: 20px;
+    letter-spacing: 3px;
+    position: fixed;
+    top: 50px;
+    right: 15px;
+    color: black;
+    z-index: 5;
+    -webkit-transform: rotate(37deg);
+    -moz-transform: rotate(37deg);
+    -o-transform: rotate(37deg);
+}
+
+.content-center {
+    width: 900px;
+    left: 50%;
+    margin-left: -450px;
+    position: absolute;
+    text-align: center;
+}
+
