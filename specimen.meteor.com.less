@@ -29,12 +29,24 @@ h1, h2, h3, h4, h5, h6 {
     src: url("font/Cabin-Medium.ttf");
     font-style: normal;
 }
-
+@font-face {
+    font-family:'Creepster';
+    src: url("font/Creepster-Regular.ttf");
+    font-style: normal;
+}
 
 body {
     font-family: 'Asap';
     font-size: 166px;
     background-color:blue;
+}
+
+h2 {
+    font-family: 'Cabin';
+    font-size: 22px;
+    letter-spacing: 2px;
+    line-height: 28px;
+    color: white;
 }
 
 .arrowright {
@@ -71,7 +83,7 @@ body {
     z-index: 5;
 }
 
-.arrowleftcorner {
+.arrowleftupcorner {
     font-family: 'Cabin';
     font-size: 20px;
     letter-spacing: 3px;
@@ -85,7 +97,7 @@ body {
     -o-transform: rotate(-37deg);
 }
 
-.arrowrightcorner {
+.arrowrightupcorner {
     font-family: 'Cabin';
     font-size: 20px;
     letter-spacing: 3px;
@@ -99,11 +111,73 @@ body {
     -o-transform: rotate(37deg);
 }
 
+.arrowleftdowncorner {
+    font-family: 'Cabin';
+    font-size: 20px;
+    letter-spacing: 3px;
+    position: fixed;
+    bottom: 40px;
+    left: 15px;
+    color: black;
+    z-index: 5;
+    -webkit-transform: rotate(37deg);
+    -moz-transform: rotate(37deg);
+    -o-transform: rotate(37deg);
+}
+
+.arrowrightdowncorner {
+    font-family: 'Cabin';
+    font-size: 20px;
+    letter-spacing: 3px;
+    position: fixed;
+    bottom: 40px;
+    right: 15px;
+    color: black;
+    z-index: 5;
+    -webkit-transform: rotate(-37deg);
+    -moz-transform: rotate(-37deg);
+    -o-transform: rotate(-37deg);
+}
+
 .content-center {
     width: 900px;
     left: 50%;
     margin-left: -450px;
     position: absolute;
     text-align: center;
+    padding-bottom: 80px;
+    padding-top:20px;
 }
 
+.description {
+    width: 600px;
+    margin-left: 150px;
+    font-family: 'Cabin';
+    font-size: 22px;
+    letter-spacing: 2px;
+    line-height: 28px;
+    color: black;
+    text-align: left;
+}
+
+.index {
+    width: 250px;
+    margin-left: 150px;
+    font-family: 'Cabin';
+    font-size: 22px;
+    letter-spacing: 2px;
+    line-height: 28px;
+    color: black;
+    text-align: left;
+    float: left;
+}
+.index2 {
+    width: 250px;
+    font-family: 'Cabin';
+    font-size: 22px;
+    letter-spacing: 2px;
+    line-height: 28px;
+    color: black;
+    text-align: left;
+    float: left;
+}

@@ -78,7 +78,7 @@ if (Meteor.isClient) {
 //             $('a').smoothScroll();
 
             // to change the title on the bar
-            document.title = "specimen";
+            document.title = " O P E N F O N T S";
             
             /*
             // checkboxes
