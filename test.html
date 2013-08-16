@@ -1,0 +1,42 @@
+<template name="test">
+
+<div class="arrowleftupcorner"><a href="/about">SPECIMEN</a></div>
+<div class="arrowrightupcorner screen-only"><div class="circle-stamp-test" style="border: 2px solid white; color: white">FONT<br>TESTER</div></div>
+<div class="arrowleftdowncorner screen-only"><a href="/index">INDEX</a></div>
+<div class="arrowrightdowncorner screen-only"><a href="/">OVERVIEW</a></div>
+<div class="arrowup screen-only"><a href="#up" style="color: white">↓ UP ↑</a></div>
+
+<div class="content-center screen-only">
+<a id="up"></a>
+<p style="text-align: center; font-family:'Cabin'; letter-spacing: 2px;">DRAG THE BOXES ON THE WHITE SPACE</p>
+<p style="text-align: center; font-family:'Cabin'; letter-spacing: 2px">RESIZE WITH THE BOTTOM-RIGHT CORNER</p>
+</div>
+
+<!--WHITE SQUARE-->
+<div style="position: absolute; left: 50%; margin-left: -225px; top: 98px; cursor: move">
+<div style="background-color: white; position: relative; width: 450px; height: 500px" class="resizable draggable"></div>
+</div>
+
+<!--FONTS LEFT-->
+<div style="position: absolute; right: 70%; top: 70px">
+<div class="test-box-title draggable resizable fonthover" style="font-family: Asap; letter-spacing: 1px"><p contenteditable="true">TITLE<span class="hover">Asap</span></p></div>
+<div contenteditable="true" class="test-box-text draggable resizable fonthover" style="font-family: Asap; letter-spacing: 1px"><span class="hover">Asap</span>Biological specimen or biospecimen, a biological laboratory specimen held by a biorepository for research;</div>
+<div class="test-box-title draggable resizable"></div>
+<div class="test-box-text draggable resizable"></div>
+<div class="test-box-title draggable resizable"></div>
+</div>
+
+<!--FONTS RIGHT-->
+<div style="position: absolute; left: 70%; top: 70px">
+<div class="test-box-title draggable resizable fonthover" style="font-family: Creepster; font-size: 100px; letter-spacing: 1px"><p contenteditable="true">TITLE<span class="hover">Creepster</span></p></div>
+<div contenteditable="true" class="test-box-text draggable resizable fonthover" style="font-family: Cabin; letter-spacing: 2px"><span class="hover">Cabin</span>Sample (material), a limited quantity of something which is intended to be similar to and represent a larger amount of that thing(s).</div>
+<div class="test-box-title draggable resizable"></div>
+<div class="test-box-text draggable resizable"></div>
+<div class="test-box-title draggable resizable"></div>
+</div>
+
+
+
+
+
+</template>

@@ -112,6 +112,24 @@ if (Meteor.isClient) {
             */
             
             $('a').smoothScroll();
+            
+            $(function() {
+                $(".draggable").draggable();
+                 
+                $( ".resizable" ).resizable();
+
+                });
+
+            $("form").validate();
+
+            $("input#send").click(function(e) {
+                e.preventDefault();
+                if ( $("form").valid() ) {
+                    alert("CEST BON!");
+                }
+            });
+            
+
 // écrire les trucs ici!! on est encore dans document ready
         });
 

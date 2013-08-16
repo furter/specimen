@@ -17,28 +17,22 @@ a, a:visited, a:hover, a:active, a:link {
 h1, h2, h3, h4, h5, h6 {
     font-weight: normal;
 }
-
-@font-face {
-    font-family:'Asap';
-    src: url("font/Asap-Regular.ttf");
-    font-style: normal;
-}
-
 @font-face {
     font-family:'Cabin';
     src: url("font/Cabin-Medium.ttf");
     font-style: normal;
 }
 @font-face {
-    font-family:'Creepster';
-    src: url("font/Creepster-Regular.ttf");
-    font-style: normal;
+    font-family:'Cabin';
+    src: url("font/Cabin-MediumItalic.ttf");
+    font-style: italic;
 }
 
 body {
-    font-family: 'Asap';
-    font-size: 166px;
+    font-size: 22px;
     background-color:blue;
+    text-rendering: optimizeLegibility;
+    font-kerning: normal;
 }
 
 h2 {
@@ -48,27 +42,14 @@ h2 {
     line-height: 28px;
     color: white;
 }
-
-.arrowright {
-    font-family: 'Cabin';
-    font-size: 20px;
-    letter-spacing: 3px;
-    top: 50%;
-    margin-top: -12px;
-    position: fixed;
-    right: 15px;
+h3 {
+    font-size: 22px;
+    letter-spacing: 2px;
+    line-height: 28px;
     color: white;
 }
-
-.arrowleft {
-    font-family: 'Cabin';
-    font-size: 20px;
-    letter-spacing: 3px;
-    top: 50%;
-    margin-top: -12px;
-    position: fixed;
-    left: 15px;
-    color: white;
+li {
+    list-style-type:none;
 }
 
 .arrowup {
@@ -76,7 +57,7 @@ h2 {
     font-size: 20px;
     letter-spacing: 3px;
     left: 50%;
-    margin-left: -16px;
+    margin-left: -40px;
     position: fixed;
     bottom: 15px;
     color: white;
@@ -88,22 +69,25 @@ h2 {
     font-size: 20px;
     letter-spacing: 3px;
     position: fixed;
-    top: 50px;
-    left: 15px;
+    top: 60px;
+    left: 25px;
     color: black;
     z-index: 5;
     -webkit-transform: rotate(-37deg);
     -moz-transform: rotate(-37deg);
     -o-transform: rotate(-37deg);
+    border: 1px solid black;
+    padding: 6px 4px 2px 6px;
 }
 
 .arrowrightupcorner {
     font-family: 'Cabin';
     font-size: 20px;
     letter-spacing: 3px;
+    text-align: center;
     position: fixed;
-    top: 50px;
-    right: 15px;
+    top: 28px;
+    right: 20px;
     color: black;
     z-index: 5;
     -webkit-transform: rotate(37deg);
@@ -116,8 +100,8 @@ h2 {
     font-size: 20px;
     letter-spacing: 3px;
     position: fixed;
-    bottom: 40px;
-    left: 15px;
+    bottom: 35px;
+    left: 30px;
     color: black;
     z-index: 5;
     -webkit-transform: rotate(37deg);
@@ -130,13 +114,63 @@ h2 {
     font-size: 20px;
     letter-spacing: 3px;
     position: fixed;
-    bottom: 40px;
-    right: 15px;
+    bottom: 55px;
+    right: 20px;
     color: black;
     z-index: 5;
     -webkit-transform: rotate(-37deg);
     -moz-transform: rotate(-37deg);
     -o-transform: rotate(-37deg);
+}
+
+.circle-stamp-pdf {
+    text-align: center;
+    border: 1px solid black;
+    padding-top: 12px;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    line-height: 25px;
+}
+.circle-stamp-test {
+    text-align: center;
+    border: 1px solid black;
+    padding-top: 20px;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    line-height: 28px;
+    letter-spacing: 1px
+}
+.semi-upper-circle-stamp {
+    text-align: center;
+    border: 1px solid black;
+    padding-top: 22px;
+    width: 100px;
+    height: 50px;
+    -moz-border-top-left-radius: 50px 50px;
+    -webkit-border-top-left-radius: 50px 50px;
+    border-top-left-radius: 50px 50px;
+    -moz-border-top-right-radius: 50px 50px;
+    -webkit-border-top-right-radius: 50px 50px;
+    border-top-right-radius: 50px 50px;
+}
+.semi-lower-circle-stamp {
+    text-align: center;
+    border: 1px solid black;
+    padding-top: 12px;
+    width: 100px;
+    height: 50px;
+    border-bottom-left-radius: 50px 50px;
+    -moz-border-bottom-left-radius: 50px 50px;
+    -webkit-border-bottom-left-radius: 50px 50px;
+    border-bottom-right-radius: 50px 50px;
+    -moz-border-bottom-right-radius: 50px 50px;
+    -webkit-border-bottom-right-radius: 50px 50px;
 }
 
 .content-center {
@@ -148,16 +182,25 @@ h2 {
     padding-bottom: 80px;
     padding-top:20px;
 }
+.content-center a {
+    cursor: e-resize;
+}
 
 .description {
-    width: 600px;
-    margin-left: 150px;
+    width: 650px;
+    margin-left: 140px;
     font-family: 'Cabin';
     font-size: 22px;
     letter-spacing: 2px;
     line-height: 28px;
     color: black;
     text-align: left;
+}
+.footnote-fonts {
+    font-size: 22px;
+    line-height: 28px;
+    text-align: left;
+    width: 750px;
 }
 
 .index {
@@ -180,4 +223,164 @@ h2 {
     color: black;
     text-align: left;
     float: left;
+}
+.overview-box {
+    border: solid 2px white;
+    width: 250px;
+    height: 300px;
+    float: left;
+    margin: 22px;
+}
+.this-way-box {
+//    border: solid 2px white;
+    font-family: Cabin;
+    font-size: 16px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    width: 175px;
+    height: 200px;
+    position: relative;
+    float: left;
+    margin: 22px;
+}
+.this-way-box div {
+    position: absolute;
+    width: 100%;
+    left: 0px;
+    bottom: 10px;
+}
+.this-way-box p {
+    font-size: 130px;
+}
+.x-height {
+//    border: solid 2px white;
+    height: 200px;
+    width: 300px;
+    display: inline-block;
+    position: relative;
+}
+.x-font {
+    font-size: 130px;
+    position: absolute;
+    width: 100%;
+    left: 0px;
+    bottom: -40px;
+    text-align: center;
+}
+.x-legende {
+    font-family: Cabin;
+    font-size: 16px;
+    letter-spacing: 2px;
+    position: absolute;
+    width: 100%;
+    left: 0px;
+    bottom: -100px;
+    text-transform: uppercase;
+    text-align: center;
+}
+.test-box-text {
+//    border: solid 1px white;
+    width: 250px;
+    min-height: 300px;
+    padding: 15px;
+    margin: 28px;
+    font-size: 20px;
+    z-index: 10;
+    cursor: move;
+}
+.test-box-text:hover {
+    border: solid 1px black;
+}
+.test-box-title {
+//    border: solid 1px white;
+    width: 250px;
+    min-height: 80px;
+    margin: 28px;
+    padding: 15px;
+    font-size: 40px;
+    z-index: 10;
+    cursor: move;
+}
+.test-box-title:hover {
+    border: solid 1px black;
+}
+.comingsoon {
+    position: relative;
+}
+.comingsoon .soon {
+    position: absolute;
+    display: none;
+}
+.comingsoon:hover {
+    letter-spacing: 4px;
+}
+.comingsoon:hover .soon {
+    font-family: Cabin;
+    display: initial;
+    font-size: 18px;
+    letter-spacing: 1px;
+    color: black;
+    margin-top: 28px;
+    right: -50px;
+    padding: 2px 4px 0px 7px;
+    background-color: white;
+}
+.fonthover .hover {
+    position: absolute;
+    display: none;
+}
+.fonthover:hover .hover {
+    font-family: Cabin;
+    display: initial;
+    font-size: 14px;
+    letter-spacing: 1px;
+    color: black;
+    margin-top: -32px;
+    left: 3px;
+    text-transform: uppercase;
+}
+// FORM - CONTACT
+textarea#content {
+    width:650px;
+    height:150px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 10px;
+    font-family: Cabin;
+    letter-spacing: 1px;
+    font-size: 18px;
+}
+input#form-email {
+    width: 200px;
+    height: 15px;
+    margin-left: 10px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    font-family: Cabin;
+    letter-spacing: 1px;
+    font-size: 12px;
+    padding-left: 5px;
+}
+input#form-name {
+    width: 150px;
+    height: 15px;
+    margin-left: 10px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    font-family: Cabin;
+    letter-spacing: 1px;
+    font-size: 12px;
+    padding-left: 5px;
+}
+
+// PRINT
+@media screen {
+    .print-only {
+        display:none;
+    }
+}
+@media print {
+    .screen-only {
+        display:none;
+    }
 }
