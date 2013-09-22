@@ -14,8 +14,13 @@
 <h4 style="margin-top: 50px">A BLOG ON OPEN SOURCE FONTS</h4>
 
 <div style="font-family: Cabin; text-align: left">
-<h4 style="margin-top: 100px; text-align: left">Last modification [from <a href="https://github.com/furter/specimen">https://github.com/furter/specimen</a>]</h4><br>DATE<br><br>
-Commit message.
+<h4 style="margin-top: 100px; text-align: left">{{#if commit}}Last modification [from <a href="https://github.com/furter/specimen">https://github.com/furter/specimen</a>]{{else}}&nbsp;{{/if}}</h4><br>
+{{#isolate}}
+{{#if commit}}
+{{ commit.date }}<br><br>
+{{#if commit.link }}<a href="{{ commit.link }}">{{/if}}{{ commit.message }}{{#if commit.link }}</a>{{/if}}
+{{/if}}
+{{/isolate}}
 </div><br><br>
 <h2 id="overview">OVERVIEW</h2><br>
 <div style="width: 895px; height: 1310px; margin-left: 8px; margin-bottom: 100px; clear: both">

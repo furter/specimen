@@ -23,7 +23,7 @@ if (Meteor.isClient) {
             var templateName = page ? page : "main";
 
             // on ajoute un variable reutilisable (mais pas utilisée pour l'instant)
-            Session.set('currentPage', page);
+            Session.set('currentPage', templateName);
 
             // on demande Meteor de faire un rendu du template correspondent
             // (dans le fichier html: <template name="about">)
@@ -69,24 +69,57 @@ if (Meteor.isClient) {
     // GET COMMITS FROM GITHUB
     // to call other servers’informations, in the terminal: meteor add http
     // we start with empty commits:
-    Session.set('commits', [])
-    // in the template name about (page about) we create the variable "comments"
-    // use this value of commit (empty)
+    Session.set('commits', []);
+    Session.set('commit', false);
+    // in the template named about (page /about) we create the variable "comments"
+    // use this value of commit (empty for now)
     Template.about.comments = function () {
         return Session.get('commits');
       };
-    // ici on va chercher sur Github:
-    HTTP.get("https://api.github.com/repos/furter/specimen/commits?path=about.html", function(error, result) {
-        // Transcribes the result (JSON text format) so that the browser understands it is JSON
-        // so that it becomes an object
-        var res = JSON.parse( result.content );
-        // Replace the value by the result got from Github
-        Session.set('commits', res);
-    });
-    // Reactualises the first code (that prints the template) 
-    // Session = reactivity, some datas are linked and updated automatically when the other changes
-    // So that it can have the time to add the things from Github
-    
+    // in the template named ‘main’ (homepage) we create the variable ‘commit’
+    // here we calculate the value:
+    Template.main.commit = function () {
+        // res is the object we get back from GitHub; we don’t need all of it
+        var res = Session.get('commit');
+        // this is a ‘Regular Expression’ test to see if a string ends in .html
+        var isHtml = new RegExp('\.html$', 'i');
+        // if we’ve already gotten something from Github:
+        if (res) {
+            // the commit object is the one we will return with this function—
+            // the one that will be passed to template. 
+            var commit = {};
+            
+            var htmlFile = false;
+            // In the info from GitHub, we find an array ‘files’, with info about
+            // the files affected by the commit.
+            // We’re going to check the filename of each file, and see if it
+            // is an html page. The first html filename we find, we’ll assign to the
+            // htmlFile variable—
+            // then we stop the loop, because we only need 1 value.
+            for (i=0; i<res.files.length; i++) {
+                var filename = res.files[i].filename;
+                if (filename.match(isHtml)) {
+                    htmlFile = filename;
+                    break;
+                }
+            }
+            if (htmlFile) {
+                // somepage.html maps to the url /somepage:
+                commit.link = '/' + htmlFile.replace('.html','');
+            } else {
+                // if no affected HTML file was found, the whole function
+                // Template.commit is going to return false,
+                // because we don’t want to display the commit in that case.
+                return false;
+            }
+            // the commit message and date, from the Github API info:
+            commit.message = res.commit.message;
+            commit.date = res.commit.author.date;
+            return commit;
+        }
+        return res;
+    }
+
     
     var isExternal = function(href) {
         if (href.indexOf("http") === -1 || href.indexOf(document.location.host) !== -1 || href.indexOf("localhost") !== -1 || href.indexOf("127.0.0.1") !== -1 ) {
@@ -106,13 +139,29 @@ if (Meteor.isClient) {
         // une fois que toute la structure de la page est là: action
         $(document).ready(function() {
             
-/*            $(window).load(function() {
-                $('#container.detailed').masonry({
-                    itemSelector: '.box',
-                    columnWidth: 254,
+            
+            // ici on va chercher sur Github:
+            if (Session.get('currentPage') === 'about') {
+                HTTP.get("https://api.github.com/repos/furter/specimen/commits?path=about.html", function(error, result) {
+                    // Transcribes the result (JSON text format) so that the browser understands it is JSON
+                    // so that it becomes an object
+                    var res = JSON.parse( result.content );
+                    // Replace the value by the result got from Github
+                    Session.set('commits', res);
                 });
-    });  */
-
+            } else if (Session.get('currentPage') === 'main') {
+                // For the homepage, we want the latest commit in full detail:
+                HTTP.get("https://api.github.com/repos/furter/specimen/commits/HEAD", function(error, result) {
+                    var res = JSON.parse( result.content );
+                    Session.set('commit', res);
+                });
+            }
+            // Through Session.set:
+            // Reactualises the first code (that prints the template) 
+            // Session = reactivity, some datas are linked and updated automatically when the other changes
+            // So that it can have the time to add the things from Github
+        
+            
             // CHANGE THE BACKGROUND COLOR - BUTTONS
             // the beginning of this is up there
             // and another part in the html main template
@@ -142,36 +191,6 @@ if (Meteor.isClient) {
             // to change the title on the bar
             document.title = " O P E N F O N T S";
             
-            /*
-            // checkboxes
-            $('.box, .biox').hide();
-            $("input").each(function() {
-                var $this = $(this);
-                $this.hide();
-                if($this.prop("checked")) {
-                    var $image = $("<img src='/checkbox-crossed.svg' />").insertAfter(this);
-                } else {
-                    var $image = $("<img src='/checkbox.png' />").insertAfter(this);
-                }
-                $image.bind("click", function() {
-                    var $checkbox = $(this).prev("input");
-                    var cat = $checkbox.val();
-                    $checkbox.prop("checked", !$checkbox.prop("checked"));    
-                    checkImage(cat);
-                })
-                function checkImage(cat) {
-                    if($image.prev("input").prop("checked")) {
-                        $image.attr("src", "/checkbox-crossed.svg");
-                        $('.' + cat).fadeIn();
-                    } else {
-                        $image.attr("src", "/checkbox.png");
-                        $('.' + cat).fadeOut(function() {
-        });
-                    }
-                }
-                
-            });
-            */
             
             
             
