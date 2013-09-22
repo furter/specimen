@@ -17,7 +17,7 @@
 <h4 style="margin-top: 100px; text-align: left">{{#if commit}}Last modification [from <a href="https://github.com/furter/specimen">https://github.com/furter/specimen</a>]{{else}}&nbsp;{{/if}}</h4><br>
 {{#isolate}}
 {{#if commit}}
-{{ commit.date }}<br><br>
+{{ formatDate commit.date }}<br><br>
 {{#if commit.link }}<a href="{{ commit.link }}">{{/if}}{{ commit.message }}{{#if commit.link }}</a>{{/if}}
 {{/if}}
 {{/isolate}}

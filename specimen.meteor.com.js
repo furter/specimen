@@ -120,6 +120,12 @@ if (Meteor.isClient) {
         return res;
     }
 
+    // Use this helper to format a date in a template:
+    // {{ formatDate commit.date }}
+    Handlebars.registerHelper("formatDate", function(datetime) {
+        // Depends on the momentjs library in client/compatibility/moment.min.js
+        return moment(datetime).format('MMMM Do YYYY');
+    });
     
     var isExternal = function(href) {
         if (href.indexOf("http") === -1 || href.indexOf(document.location.host) !== -1 || href.indexOf("localhost") !== -1 || href.indexOf("127.0.0.1") !== -1 ) {
