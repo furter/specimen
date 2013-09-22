@@ -35,18 +35,34 @@ body {
     font-kerning: normal;
 }
 
+h1 {
+    font-family: 'Cabin';
+    font-size: 150px;
+    letter-spacing: 10px;
+    line-height: 140px;
+}
 h2 {
     font-family: 'Cabin';
     font-size: 22px;
     letter-spacing: 2px;
     line-height: 28px;
     color: white;
+    height: 50px;
+    padding-top: 40px;
 }
 h3 {
     font-size: 22px;
     letter-spacing: 2px;
     line-height: 28px;
     color: white;
+    height: 50px;
+    padding-top: 40px;
+}
+h4 {
+    font-family: 'Cabin';
+    font-size: 22px;
+    letter-spacing: 2px;
+    line-height: 28px;
 }
 li {
     list-style-type:none;
@@ -63,7 +79,6 @@ li {
     color: white;
     z-index: 5;
 }
-
 .arrowleftupcorner {
     font-family: 'Cabin';
     font-size: 20px;
@@ -77,6 +92,8 @@ li {
     -moz-transform: rotate(-37deg);
     -o-transform: rotate(-37deg);
     border: 1px solid black;
+    height: 32px;
+    width: 132px;
     padding: 6px 4px 2px 6px;
 }
 
@@ -173,6 +190,8 @@ li {
     -webkit-border-bottom-right-radius: 50px 50px;
 }
 
+// CONTENT
+
 .content-center {
     width: 900px;
     left: 50%;
@@ -180,7 +199,6 @@ li {
     position: absolute;
     text-align: center;
     padding-bottom: 80px;
-    padding-top:20px;
 }
 .content-center a {
     cursor: e-resize;
@@ -202,10 +220,8 @@ li {
     text-align: left;
     width: 750px;
 }
-
 .index {
-    width: 250px;
-    margin-left: 150px;
+    width: 300px;
     font-family: 'Cabin';
     font-size: 22px;
     letter-spacing: 2px;
@@ -215,7 +231,7 @@ li {
     float: left;
 }
 .index2 {
-    width: 250px;
+    width: 200px;
     font-family: 'Cabin';
     font-size: 22px;
     letter-spacing: 2px;
@@ -311,9 +327,7 @@ li {
     position: absolute;
     display: none;
 }
-.comingsoon:hover {
-    letter-spacing: 4px;
-}
+
 .comingsoon:hover .soon {
     font-family: Cabin;
     display: initial;
@@ -339,6 +353,16 @@ li {
     left: 3px;
     text-transform: uppercase;
 }
+
+// CSS TAPE PIECES - for instance for Charis font
+.tape {
+    position: absolute; 
+    border: 1px solid grey;
+    width: 30px;
+    height: 60px;
+    z-index: 200;
+}
+
 // FORM - CONTACT
 textarea#content {
     width:650px;

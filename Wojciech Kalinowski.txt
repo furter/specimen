@@ -1,0 +1,9 @@
+Wojciech Kalinowski was born in Wroclaw, Poland in 1969. Since 1990, he has designed and carved inscriptions and reliefs in stone, commemorative plaques, and gravestones. He also deals with computer graphics, digital typeface and logo design, and wallpapers. His typefaces are free and are available from the Open Font Library (or OFL).
+
+NovaMono is the monospace font especially created for programming, text editors and for terminal-use. NovaMono contains a large number of symbols, operators and other miscellaneous signs.
+
+
+I created the NovaCut font about 14-15 years ago for making inscriptions on stone. Initially the font contained only capitals and digits and existed only on paper and stone inscriptions. In 2010 I decided transfer this font to a computer, and made the missing lowercase and some basical signs; it was initially named Gothica. By the way I made other versions of some letters. It was a lot of this at the end of my work. I decided create new fonts based on these letters. And finally I created eight fonts family and named these fonts Nova (NovaCut, NovaFlat, NovaOval, NovaRound, NovaSquare... - by the shape of individual fonts). These are my first digital fonts, I made and they had some defects. Now (29.05.2011) fonts are fixed. All fonts redesigned 21.08.2011. New release contains only seven fonts without Nova Mono.
+
+
+Consola Mono: factuur OSP ^_^

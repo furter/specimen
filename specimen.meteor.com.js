@@ -40,7 +40,54 @@ if (Meteor.isClient) {
             $('div#container').addClass(templateName);
         },
     });
+    
+    Template.main.rendered = function() {
+        var hash = document.location.hash;
+        if (hash) {
+            $('html,body').animate({scrollTop: $(hash).offset().top});
+        }
+    };
 
+    // CHANGE THE BACKGROUND COLOR - BUTTONS
+    // We want to define it when it is not set
+    // If the variable is not set (expressed by the ! and Session.get…)
+    if ( ! Session.get('backgroundColorVariable') ) {
+        // then we set it in blue
+        //Session.set('backgroundColorVariable', "blue");
+    }
+    // Put new value in the template dynamicStyle, see specimen.meteor.com.html file
+    // we create the variable backrgoundColor, we prepare what will be sent to the template
+    // Session is a variable that is persistent in all the session (connection of a user)
+    Template.dynamicStyle.backgroundColor = function () {
+        return Session.get('backgroundColorVariable');
+    };
+    // then go to specimen.meteor.com
+    // we replace the color of background-color by the variable: (curly brackets) backgroundColor
+    // and later here in the javascript the rest of the code
+    
+    
+    // GET COMMITS FROM GITHUB
+    // to call other servers’informations, in the terminal: meteor add http
+    // we start with empty commits:
+    Session.set('commits', [])
+    // in the template name about (page about) we create the variable "comments"
+    // use this value of commit (empty)
+    Template.about.comments = function () {
+        return Session.get('commits');
+      };
+    // ici on va chercher sur Github:
+    HTTP.get("https://api.github.com/repos/furter/specimen/commits?path=about.html", function(error, result) {
+        // Transcribes the result (JSON text format) so that the browser understands it is JSON
+        // so that it becomes an object
+        var res = JSON.parse( result.content );
+        // Replace the value by the result got from Github
+        Session.set('commits', res);
+    });
+    // Reactualises the first code (that prints the template) 
+    // Session = reactivity, some datas are linked and updated automatically when the other changes
+    // So that it can have the time to add the things from Github
+    
+    
     var isExternal = function(href) {
         if (href.indexOf("http") === -1 || href.indexOf(document.location.host) !== -1 || href.indexOf("localhost") !== -1 || href.indexOf("127.0.0.1") !== -1 ) {
             return false;
@@ -66,6 +113,22 @@ if (Meteor.isClient) {
                 });
     });  */
 
+            // CHANGE THE BACKGROUND COLOR - BUTTONS
+            // the beginning of this is up there
+            // and another part in the html main template
+            $(".button-yellow").click(function(){ 
+                //$('body').css("background-color","yellow");
+                Session.set("backgroundColorVariable", "yellow");
+            });
+            $(".button-blue").click(function(){ 
+                //$('body').css("background-color","blue");
+                Session.set("backgroundColorVariable", "blue");
+            });
+            $(".button-soft").click(function(){ 
+                //$('body').css("background-color","#FFFFCC");
+                Session.set("backgroundColorVariable", "#FFFFCC");
+            });
+            
             // action: si c'est externe, on attribue à "ça" une target pour le lien qui est un nouvel onglet
              $("a[href]").each(
              function() {
@@ -75,7 +138,6 @@ if (Meteor.isClient) {
              }
              );
              
-//             $('a').smoothScroll();
 
             // to change the title on the bar
             document.title = " O P E N F O N T S";
@@ -111,6 +173,8 @@ if (Meteor.isClient) {
             });
             */
             
+            
+            
             $('a').smoothScroll();
             
             $(function() {
@@ -128,6 +192,10 @@ if (Meteor.isClient) {
                     alert("CEST BON!");
                 }
             });
+            // API for GitHub to only have commits from the page about.html
+            // https://api.github.com/repos/furter/specimen/commits?path=about.html
+            // after we must find a way to call it here with javascript
+            
             
 
 // écrire les trucs ici!! on est encore dans document ready

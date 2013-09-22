@@ -1,25 +1,90 @@
 <template name="propcourier">
 
-<div class="arrowleftupcorner"><a href="/about">SPECIMEN</a></div>
+<div class="arrowleftupcorner"><a href="/about"><span style="margin-left: 20px">ABOUT</span></a></div>
 <div class="arrowrightupcorner"><a href=""><div class="semi-upper-circle-stamp"><a href="">PRINT</a></div>
 <div class="semi-lower-circle-stamp"><a href="">PDF</a></div></a></div>
-<div class="arrowleftdowncorner"><a href="/index">INDEX</a></div>
-<div class="arrowrightdowncorner" style="color: white"><a href="/">OVERVIEW</a></div>
+<div class="arrowleftdowncorner"><a href="/main#index">INDEX</a></div>
+<div class="arrowrightdowncorner" style="color: white"><a href="/main#overview">OVERVIEW</a></div>
 <div class="arrowup"><a href="#up" style="color: white">↓ UP ↑</a></div>
 
 
-<div class="content-center" style="font-family: NotCourierSans">
+<div class="content-center" style="font-family: PropCourierSans">
 <a id="up"></a>
 <h3>PROPCOURIER SANS</h3>
 
 <div class="footnote-fonts">
 
 <img src="/propcouriersansspecimen-thumb-500x707-265.png" style="margin: 20px 0px 20px 0px">
-<br>PropCourier Sans
-PropCourier Sans is a proportional version of OSP’s NotCourier Sans, forked by Manufactura Independente.
+<br>
+“<a href="https://gitorious.org/libregraphicsmag/propcouriersans/source/327243653b87f1607a36146f15ee6467e7885839:">PropCourier Sans</a> is a proportional version of OSP’s NotCourier Sans, forked by <a href="http://manufacturaindependente.org/">Manufactura Independente</a>.<br>
+PropCourier Sans is the ‘official’ typeface of <a href="http://libregraphicsmag.com/">Libre Graphics Magazine</a>. The typeface will be gradually improved and tweaked between issues.
+The majority of the changes are in the left and right bearings of each glyph. Some glyphs have been changed to fit better into a proportional design (e.g. lowercase i). We have also improved kernings for the most commonly used words such as F/LOSS.”<br><br>
 
-PropCourier Sans is the ‘official’ typeface of Libre Graphics Magazine. The typeface will be gradually improved and tweaked between issues.
-The majority of the changes are in the left and right bearings of each glyph. Some glyphs have been changed to fit better into a proportional design (e.g. lowercase i). We have also improved kernings for the most commonly used words such as F/LOSS.<br><br>
+For this font, Manufactura Independente created a spacing tool:<br></br>
+TRANSPACING<br></br>
+“This script transplants spacing information from one font to another.
+<br>
+We wrote this while working on PropCourier Sans, a proportional version of the monospaced font NotCourier Sans. At first we re-adjusted the spacings by hand, but soon realized it would be handy to have a tool to get spacings from an existing libre font and apply them to another. Thus, the transpacing script was born.”
+<br><br>
+<a href="https://github.com/ManufacturaInd/tinytypetools/tree/master/transpacing">https://github.com/ManufacturaInd/tinytypetools/tree/master/transpacing</a>
+
+<br><br><br>
+<div style="padding-left:80px">
+<span style="color: white">#!/usr/bin/env python</span><br>
+<b>import</b> sys<br>
+<b>import</b> os, shutil<br>
+<b>import</b> fontforge<br>
+<br>
+<b>if</b> len(sys.argv) != 4:<br>
+<p style="padding-left:40px">
+    <b>print</b> "Usage: <source font> <target font> <output filename>"<br>
+    sys.exit()</p>
+<br>
+SOURCE = os.path.abspath(sys.argv[1])<br>
+TARGET = os.path.abspath(sys.argv[2])<br>
+OUTFILE = os.path.abspath(sys.argv[3])<br>
+<br>
+source_font = fontforge.open(SOURCE)<br>
+target_font = fontforge.open(TARGET)<br>
+<br>
+FACTOR = target_font.capHeight / source_font.capHeight<br>
+<br>
+<b>for</b> glyphname <b>in</b> source_font:<br>
+<p style="padding-left:40px">
+    <b>if</b> glyphname.startswith(('uni', '.', 'nonmarking', 'space')):</p>
+<p style="padding-left:80px">
+        <b>continue</b></p>
+<p style="padding-left:40px">
+    g = source_font[glyphname]<br>
+    w = int(g.width * FACTOR)<br>
+    lsb = int(g.left_side_bearing * FACTOR)<br>
+    rsb = int(g.right_side_bearing * FACTOR)<br>
+    glyph_width = int(w - lsb - rsb)<br>
+<br><br>
+    <b>if</b> glyphname in target_font:<br></p>
+<p style="padding-left:80px">
+        target_font[glyphname].width = w<br>
+        target_font[glyphname].left_side_bearing = lsb<br>
+        target_font[glyphname].right_side_bearing = rsb<br></p>
+<br>
+<p style="padding-left:40px; color: white">
+    # addPosSub(subtable-name,other-glyph-name,kerning)<br>
+    # addKerningClass(lookup-name,new-subtable-name,<br>
+    #first-classes, second-classes, offsets [,after])</p>
+<br><br>
+<span style="color: white"># copy GPOS/kerning tables</span><br>
+lookup_name = source_font.gpos_lookups[0]<br>
+target_font.importLookups(source_font, (lookup_name,))
+<br><br>
+<b>if</b> OUTFILE.endswith('sfd'):<br>
+<p style="padding-left:40px">
+    target_font.save(OUTFILE)<br></p>
+<b>else:</b><br>
+<p style="padding-left:40px">
+    target_font.generate(OUTFILE)<br></p>
+</div> <!-- end div padding code -->
+
+<br><br>
 See also: <a href="notcourier">Not Courier</a>
 <br>
 
