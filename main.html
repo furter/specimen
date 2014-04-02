@@ -1,7 +1,7 @@
 <template name="main">
 
-<div class="arrowleftupcorner"><a href="/about"><span style="margin-left: 20px">ABOUT</span></a></div>
-<div class="arrowrightupcorner"><div class="circle-stamp-test"><a href="/test">FONT<br>TESTER</a></div></div>
+<a href="/about"><div class="arrowleftupcorner"><span style="margin-left: 20px">ABOUT</span></div></a>
+<a href="/test"><div class="arrowrightupcorner"><div class="circle-stamp-test">FONT<br>TESTER</div></div></a>
 <div class="arrowleftdowncorner"><a href="#index">INDEX</a></div>
 <div class="arrowrightdowncorner"><a href="#overview">OVERVIEW</a></div>
 <div class="arrowup" style="margin-left: -16px;"><a href="#up" style="color: white">UP</a></div>
@@ -9,22 +9,25 @@
 
 <div class="content-center">
 
-<h1 style="margin-top: 30%;">SPECIMEN</h1>
+<h1 style="margin-top: 30%; color: white">SPECIMEN</h1>
 
 <h4 style="margin-top: 50px">A BLOG ON OPEN SOURCE FONTS</h4>
+<h4 style="margin-top: 50px">A SERIES OF INTERNATIONAL EVENTS</h4>
+<div class="comingsoon">coming soon!</div>
 
-<div style="font-family: Cabin; text-align: left">
-<h4 style="margin-top: 100px; text-align: left">{{#if commit}}Last modification [from <a href="https://github.com/furter/specimen">https://github.com/furter/specimen</a>]{{else}}&nbsp;{{/if}}</h4><br>
+<div style="font-family: Cabin; line-height: 26px; text-align: left; width: 550px">
+<h4 style="margin-top: 100px; text-align: left">{{#if commit}}Last modification <a href="https://github.com/furter/specimen">[from GitHub]</a> :{{else}}&nbsp;{{/if}}</h4><br>
 {{#isolate}}
 {{#if commit}}
-{{ formatDate commit.date }}<br><br>
+{{ formatDate commit.date }}<br>
 {{#if commit.link }}<a href="{{ commit.link }}">{{/if}}{{ commit.message }}{{#if commit.link }}</a>{{/if}}
 {{/if}}
 {{/isolate}}
 </div><br><br>
 <h2 id="overview">OVERVIEW</h2><br>
-<div style="width: 895px; height: 1310px; margin-left: 8px; margin-bottom: 100px; clear: both">
+<div style="width: 895px; height: 1650px; margin-left: 8px; margin-bottom: 100px; clear: both">
 <a href="/asap"><div class="overview-box"><img src="/a-sap.png" style="width: 240px; margin-top: 25px"></div></a>
+<a href="/bespoke"><div class="overview-box"><img src="/metaflop-detail-nb.png" style="width: 250px; margin-left: -3px"></div></a>
 <!-- <a href=""><div class="overview-box comingsoon"><p style="font-family: Averia; font-size: 30px; letter-spacing: 1px; margin-top:20px; margin-bottom: -10px;"></div></a> -->
 <!-- <a href="/bitter"><div class="overview-box" style="font-family: Bitter; font-size: 50px; letter-spacing: 1px"></div></a> -->
 <!-- <a href=""><div class="overview-box"><p style="font-family: Cabin; font-size: 30px; letter-spacing: 1px; margin-top:20px; margin-bottom: -10px;"></p></div></a> -->
@@ -49,11 +52,13 @@
 ☆&thinsp;☆&thinsp;☆&thinsp;☆&thinsp;☆<br></p></div></a>
 <!-- <a href=""><div class="overview-box"><p style="font-family: Poly; font-size: 30px; letter-spacing: 1px; margin-top:20px; margin-bottom: -10px;"></p></div></a> -->
 <a href="/propcourier"><div class="overview-box"><img src="/propcouriersansspecimen-thumb-500x707-265.png" style="width: 210px"></div></a>
+<!-- <a href="/railway"><div class="overview-box"></div></a> -->
 <!-- <a href=""><div class="overview-box"><p style="font-family: Reglo; font-size: 30px; letter-spacing: 1px; margin-top:20px; margin-bottom: -10px;"></p></div></a> -->
 <a href="/sansguilt"><div class="overview-box"><img src="/NotGuilty-small.png" style="width: 240px"></div></a>
 <!--<a href=""><div class="overview-box"><p style="font-family: Transport; font-size: 30px; letter-spacing: 1px; margin-top:20px; margin-bottom: -10px;"></p></div></a> -->
 <a href="/universelse"><div class="overview-box"><img src="/UniversElse-small.png" style="width: 240px"></div></a>
 <a href="/zxx"><div class="overview-box"><p style="font-family: ZXX; font-size: 100px; letter-spacing: 1px; margin-top:80px; margin-bottom: -10px;">ZXX</p></div></a>
+<div class="overview-box" style="border: none"><p style="font-family: Cabin; font-size: 100px; letter-spacing: 1px; margin-top:80px; margin-bottom: -10px; color: white">...</p></div>
 </div>
 
 
@@ -78,10 +83,10 @@ HISTORY<br><br>
 <li>Prehistory</li>
 <li>Antiquity</li>
 <li>Middle Ages</li>
-<li>Modern Ages</li>
+<li><a href="#overview">Modern Ages</a></li>
 <br>
 <li>BC</li>
-<li>AD</li>
+<li><a href="#overview">AD</a></li>
 <br>
 <li>0</li>
 <li>I</li>
@@ -118,7 +123,7 @@ HISTORY<br><br>
 <li>2000</li>
 <li>2010</li>
 <br>
-<li>The Future</li>
+<li><a href="/thefuture">The Future</a></li>
 
 
 </div>
