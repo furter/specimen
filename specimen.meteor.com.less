@@ -9,23 +9,16 @@ div {
     box-sizing: border-box;
 }
 
-a, a:visited, a:hover, a:active, a:link {
+a, a:visited, a:active, a:link {
     color: black;
     text-decoration: none;
 }
-
+a:hover{
+    color: white;
+    text-decoration: none;
+}
 h1, h2, h3, h4, h5, h6 {
     font-weight: normal;
-}
-@font-face {
-    font-family:'Cabin';
-    src: url("font/Cabin-Medium.ttf");
-    font-style: normal;
-}
-@font-face {
-    font-family:'Cabin';
-    src: url("font/Cabin-MediumItalic.ttf");
-    font-style: italic;
 }
 
 body {
@@ -96,7 +89,11 @@ li {
     width: 132px;
     padding: 6px 4px 2px 6px;
 }
-
+.arrowleftupcorner:hover {
+    border: 2px solid white;
+    padding: 5px 4px 2px 5px;
+    color: white;
+}
 .arrowrightupcorner {
     font-family: 'Cabin';
     font-size: 20px;
@@ -111,7 +108,10 @@ li {
     -moz-transform: rotate(37deg);
     -o-transform: rotate(37deg);
 }
-
+.arrowrightupcorner:hover .semi-upper-circle-stamp, .arrowrightupcorner:hover .semi-lower-circle-stamp, .arrowrightupcorner:hover .circle-stamp-test {
+    border: 2px solid white;
+    color: white;
+}
 .arrowleftdowncorner {
     font-family: 'Cabin';
     font-size: 20px;
@@ -182,6 +182,7 @@ li {
     padding-top: 12px;
     width: 100px;
     height: 50px;
+    margin-top: -1px;
     border-bottom-left-radius: 50px 50px;
     -moz-border-bottom-left-radius: 50px 50px;
     -webkit-border-bottom-left-radius: 50px 50px;
@@ -246,6 +247,7 @@ li {
     height: 300px;
     float: left;
     margin: 22px;
+    overflow: hidden;
 }
 .this-way-box {
 //    border: solid 2px white;
@@ -320,23 +322,22 @@ li {
 .test-box-title:hover {
     border: solid 1px black;
 }
+//main page: coming soon!
 .comingsoon {
-    position: relative;
-}
-.comingsoon .soon {
     position: absolute;
-    display: none;
-}
-
-.comingsoon:hover .soon {
-    font-family: Cabin;
-    display: initial;
-    font-size: 18px;
+    font-family: 'Cabin';
+    font-size: 22px;
     letter-spacing: 1px;
+    top: 550px;
+    left: 67%;
     color: black;
-    margin-top: 28px;
-    right: -50px;
-    padding: 2px 4px 0px 7px;
+    z-index: 5;
+    -webkit-transform: rotate(-20deg);
+    -moz-transform: rotate(-20deg);
+    -o-transform: rotate(-20deg);
+    height: 30px;
+    width: 156px;
+    padding: 4px 4px 2px 4px;
     background-color: white;
 }
 .fonthover .hover {
@@ -353,6 +354,10 @@ li {
     left: 3px;
     text-transform: uppercase;
 }
+
+// SPECIFIC PAGES ************** 
+
+
 
 // CSS TAPE PIECES - for instance for Charis font
 .tape {
@@ -406,5 +411,31 @@ input#form-name {
 @media print {
     .screen-only {
         display:none;
+    }
+    .arrowup {
+        display:none;
+    }
+    .arrowleftupcorner {
+        display:none;
+    }
+    .arrowrightupcorner {
+        display:none;
+    }
+    .arrowleftdowncorner {
+        display:none;
+    }
+    .arrowrightdowncorner {
+        display:none;
+    }
+    .content-center {
+        width: 900px;
+        left: 0px;
+        margin-left: 0px;
+        position: relative;
+        text-align: center;
+        padding-bottom: 0px;
+    }
+    .img-specimen-print {
+        width: 1100px;
     }
 }

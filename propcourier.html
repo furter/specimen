@@ -1,8 +1,8 @@
 <template name="propcourier">
 
-<div class="arrowleftupcorner"><a href="/about"><span style="margin-left: 20px">ABOUT</span></a></div>
-<div class="arrowrightupcorner"><a href=""><div class="semi-upper-circle-stamp"><a href="">PRINT</a></div>
-<div class="semi-lower-circle-stamp"><a href="">PDF</a></div></a></div>
+<a href="/about"><div class="arrowleftupcorner"><span style="margin-left: 20px">ABOUT</span></div></a>
+<a href="javascript:if(window.print)window.print()"><div class="arrowrightupcorner"><div class="semi-upper-circle-stamp">PRINT</div>
+<div class="semi-lower-circle-stamp">PDF</div></div></a>
 <div class="arrowleftdowncorner"><a href="/main#index">INDEX</a></div>
 <div class="arrowrightdowncorner" style="color: white"><a href="/main#overview">OVERVIEW</a></div>
 <div class="arrowup"><a href="#up" style="color: white">↓ UP ↑</a></div>
@@ -20,7 +20,7 @@
 PropCourier Sans is the ‘official’ typeface of <a href="http://libregraphicsmag.com/">Libre Graphics Magazine</a>. The typeface will be gradually improved and tweaked between issues.
 The majority of the changes are in the left and right bearings of each glyph. Some glyphs have been changed to fit better into a proportional design (e.g. lowercase i). We have also improved kernings for the most commonly used words such as F/LOSS.”<br><br>
 
-For this font, Manufactura Independente created a spacing tool:<br></br>
+To make this font, Manufactura Independente created a spacing tool:<br></br>
 TRANSPACING<br></br>
 “This script transplants spacing information from one font to another.
 <br>
@@ -83,6 +83,9 @@ target_font.importLookups(source_font, (lookup_name,))
 <p style="padding-left:40px">
     target_font.generate(OUTFILE)<br></p>
 </div> <!-- end div padding code -->
+
+<br><br>
+PropCourier is a mix between two open source fonts: <a href="notcourier">Not Courier</a>’s letterforms and <a href="http://dejavu-fonts.org/wiki/index.php?title=Main_Page">DejaVu</a>’s spacing.
 
 <br><br>
 See also: <a href="notcourier">Not Courier</a>
