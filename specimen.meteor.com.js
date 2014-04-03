@@ -2,6 +2,19 @@ if (Meteor.isServer) {
     Meteor.startup(function() {
         // code to run on server at startup
     });
+    
+    Meteor.methods({
+        sendEmail: function (from, text) {
+            this.unblock();
+    
+            Email.send({
+                to: "Loraine Furter <loraine.furter@gmail.com>",
+                from: from,
+                subject: "New Specimen comment from " + from,
+                text: text
+            });
+        }
+    });
 }
 
 if (Meteor.isClient) {
@@ -118,7 +131,7 @@ if (Meteor.isClient) {
             return commit;
         }
         return res;
-    }
+    };
 
     // Use this helper to format a date in a template:
     // {{ formatDate commit.date }}
@@ -186,11 +199,11 @@ if (Meteor.isClient) {
             
             // action: si c'est externe, on attribue à "ça" une target pour le lien qui est un nouvel onglet
              $("a[href]").each(
-             function() {
-             if (isExternal($(this).attr('href')) ) {
-             $(this).attr('target', '_blank')
-             }
-             }
+                 function() {
+                     if (isExternal($(this).attr('href')) ) {
+                        $(this).attr('target', '_blank');
+                     }
+                 }
              );
              
 
@@ -209,12 +222,18 @@ if (Meteor.isClient) {
 
                 });
 
-            $("form").validate();
+            var contactFormValidator = $("form").validate();
+            console.log(contactFormValidator);
 
             $("input#send").click(function(e) {
                 e.preventDefault();
                 if ( $("form").valid() ) {
-                    alert("CEST BON!");
+                    var email = $("input#form-name").val() + ' <' + $("input#form-email").val() +'>';
+                    var content = $("textarea#form-content").val();
+                    Meteor.call('sendEmail',
+                                email,
+                                content);
+                    alert("Thank you.");
                 }
             });
             // API for GitHub to only have commits from the page about.html
