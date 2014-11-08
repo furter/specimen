@@ -183,7 +183,7 @@ Soon, with <a href="http://i.liketightpants.net/and/how-it-has-come-about-that-c
 No type design comes completely out of nowhere. In fact, it is more the concept of originality or uniqueness that comes out of nowhere.<br>
 Copy, re-interpretation of typefaces has always been part of the history of typography (on this specific question, read <a href="http://ospublish.constantvzw.org/blog/typo/appropriation-and-type-before-and-today"><span style="color: white">→</span> this article…</a>), and still today old metal typefaces need to be translated into digital formats to be used on new mediums.<br><br>
 Let’s be thankful to what inspires us.<br><br><br>
-<p style="padding-left:300px" id="me">Loraine Furter
+<p style="padding-left:300px" id="me">Loraine Furter</p>
 <br><br><br><br>
 
 <p style="padding-left:60px; color: white">COLOPHON</p><br>
@@ -216,15 +216,12 @@ Open Font Library’s Guidebook</a>.<br>
 <!-- refers to specimen.js -->
 <!-- each comments means for each object {} in the collection [] we described in the javascript section -->
 <!-- attributed as the property "comments" of the about template object-->
-<!-- we use a command in the js file that refreshes the template, so we need to isolate it so that is doesn't destroy all teh javascript -->
-{{#isolate}}
 {{#each comments}}
 <div class="commit-message">
 <div class="date-commit-message">{{ formatDate commit.author.date }}</div>
 {{ commit.message }}</div>
 <br><br>
 {{/each}}
-{{/isolate}}
 
 Explore the history of <a href="https://github.com/furter/specimen/blob/master/about.html">this page</a> and of the whole site on:<br>
 <a href="https://github.com/furter/specimen">https://github.com/furter/specimen</a>

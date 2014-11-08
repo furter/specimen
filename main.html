@@ -17,12 +17,10 @@
 
 <div style="font-family: Cabin; line-height: 26px; text-align: left; width: 550px">
 <h4 style="margin-top: 100px; text-align: left">{{#if commit}}Last modification <a href="https://github.com/furter/specimen">[from GitHub]</a> :{{else}}&nbsp;{{/if}}</h4><br>
-{{#isolate}}
 {{#if commit}}
 {{ formatDate commit.date }}<br>
-{{#if commit.link }}<a href="{{ commit.link }}">{{/if}}{{ commit.message }}{{#if commit.link }}</a>{{/if}}
+{{#if commit.link }}<a href="{{ commit.link }}">{{ commit.message }}</a>{{else}}{{ commit.message }}{{/if}}
 {{/if}}
-{{/isolate}}
 </div><br><br>
 <h2 id="overview">OVERVIEW</h2><br>
 

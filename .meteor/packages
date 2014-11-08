@@ -5,7 +5,6 @@
 
 autopublish
 insecure
-preserve-inputs
 backbone
 less
 jquery
@@ -13,3 +12,5 @@ underscore
 standard-app-packages
 http
 email
+blaze
+

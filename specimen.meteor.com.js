@@ -40,15 +40,16 @@ if (Meteor.isClient) {
 
             // on demande Meteor de faire un rendu du template correspondent
             // (dans le fichier html: <template name="about">)
-            var frag = Meteor.render(function() {
-                var i = Template[templateName] ? Template[templateName]() : "";
-                return i;
-            });
-
+            var tmpl = Template[templateName];
+            if (typeof tmpl === "undefined") {
+                this.navigate('/'); //if the template is not found, go to home page
+                return;
+            }
+            Blaze.render(tmpl, document.getElementById("container"));
+            
             // insertion de ce rendu dans le document dans le browser,
             // à l'endroit où se trouve le div avec le id container
             // <div id="container"></div>
-            $('div#container').html(frag);
             $('div#container').removeClass();
             $('div#container').addClass(templateName);
         },
@@ -71,9 +72,11 @@ if (Meteor.isClient) {
     // Put new value in the template dynamicStyle, see specimen.meteor.com.html file
     // we create the variable backrgoundColor, we prepare what will be sent to the template
     // Session is a variable that is persistent in all the session (connection of a user)
-    Template.dynamicStyle.backgroundColor = function () {
-        return Session.get('backgroundColorVariable');
-    };
+    Template.dynamicStyle.helpers({
+        backgroundColor: function () {
+            return Session.get('backgroundColorVariable');
+        }
+    });
     // then go to specimen.meteor.com
     // we replace the color of background-color by the variable: (curly brackets) backgroundColor
     // and later here in the javascript the rest of the code
@@ -86,53 +89,57 @@ if (Meteor.isClient) {
     Session.set('commit', false);
     // in the template named about (page /about) we create the variable "comments"
     // use this value of commit (empty for now)
-    Template.about.comments = function () {
-        return Session.get('commits');
-      };
+    Template.about.helpers({
+        comments: function () {
+            return Session.get('commits');
+        }
+    });
     // in the template named ‘main’ (homepage) we create the variable ‘commit’
     // here we calculate the value:
-    Template.main.commit = function () {
-        // res is the object we get back from GitHub; we don’t need all of it
-        var res = Session.get('commit');
-        // this is a ‘Regular Expression’ test to see if a string ends in .html
-        var isHtml = new RegExp('\.html$', 'i');
-        // if we’ve already gotten something from Github:
-        if (res) {
-            // the commit object is the one we will return with this function—
-            // the one that will be passed to template. 
-            var commit = {};
-            
-            var htmlFile = false;
-            // In the info from GitHub, we find an array ‘files’, with info about
-            // the files affected by the commit.
-            // We’re going to check the filename of each file, and see if it
-            // is an html page. The first html filename we find, we’ll assign to the
-            // htmlFile variable—
-            // then we stop the loop, because we only need 1 value.
-            for (i=0; i<res.files.length; i++) {
-                var filename = res.files[i].filename;
-                if (filename.match(isHtml)) {
-                    htmlFile = filename;
-                    break;
+    Template.main.helpers({
+        commit: function () {
+            // res is the object we get back from GitHub; we don’t need all of it
+            var res = Session.get('commit');
+            // this is a ‘Regular Expression’ test to see if a string ends in .html
+            var isHtml = new RegExp('\.html$', 'i');
+            // if we’ve already gotten something from Github:
+            if (res) {
+                // the commit object is the one we will return with this function—
+                // the one that will be passed to template. 
+                var commit = {};
+                
+                var htmlFile = false;
+                // In the info from GitHub, we find an array ‘files’, with info about
+                // the files affected by the commit.
+                // We’re going to check the filename of each file, and see if it
+                // is an html page. The first html filename we find, we’ll assign to the
+                // htmlFile variable—
+                // then we stop the loop, because we only need 1 value.
+                for (i=0; i<res.files.length; i++) {
+                    var filename = res.files[i].filename;
+                    if (filename.match(isHtml)) {
+                        htmlFile = filename;
+                        break;
+                    }
                 }
+                if (htmlFile) {
+                    // somepage.html maps to the url /somepage:
+                    commit.link = '/' + htmlFile.replace('.html','');
+                } else {
+                    // if no affected HTML file was found, the whole function
+                    // Template.commit is going to return false,
+                    // because we don’t want to display the commit in that case.
+                    return false;
+                }
+                // the commit message and date, from the Github API info:
+                commit.message = res.commit.message;
+                commit.date = res.commit.author.date;
+                return commit;
             }
-            if (htmlFile) {
-                // somepage.html maps to the url /somepage:
-                commit.link = '/' + htmlFile.replace('.html','');
-            } else {
-                // if no affected HTML file was found, the whole function
-                // Template.commit is going to return false,
-                // because we don’t want to display the commit in that case.
-                return false;
-            }
-            // the commit message and date, from the Github API info:
-            commit.message = res.commit.message;
-            commit.date = res.commit.author.date;
-            return commit;
+            return res;
         }
-        return res;
-    };
-
+    });
+    
     // Use this helper to format a date in a template:
     // {{ formatDate commit.date }}
     Handlebars.registerHelper("formatDate", function(datetime) {
