@@ -6,6 +6,9 @@
 </head>
 
 <body>
+</body>
+
+<template name="layout">
     {{> dynamicStyle }}
     <div class="none" style="position: fixed; width: 25px; height: 65px; margin-top: 23%">
         <div class="button-yellow" style=" height: 20px; width: 20px; background-color: yellow"></div>
@@ -13,16 +16,9 @@
         <div class="button-soft" style="; height: 20px; width: 20px; background-color: #FFFFCC"></div>
     </div>
     <div id="container" class="clearfix">
-    
-        {{> template }}
+        {{> yield }}
     </div>
-
-</body>
-
-<template name="template">
-{{renderPage}}
 </template>
-
 
 <template name="dynamicStyle">
     <style>
