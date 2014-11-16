@@ -54,8 +54,7 @@ Template.main.rendered = function() {
     if (hash) {
         $('html,body').animate({scrollTop: $(hash).offset().top});
     }
-    // utiliser `this.$` est pareil à utiliser juste `$`, sauf que s’agit que sur le template et pas les alentours
-    this.$('a').smoothScroll();
+    $('a').smoothScroll();
     // For the homepage, we want the latest commit in full detail:
     HTTP.get("https://api.github.com/repos/furter/specimen/commits/HEAD", function(error, result) {
         var res = JSON.parse( result.content );
