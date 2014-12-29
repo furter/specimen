@@ -3,7 +3,7 @@
 // If the variable is not set (expressed by the ! and Session.get…)
 if ( ! Session.get('backgroundColorVariable') ) {
     // then we set it in blue
-    Session.set('backgroundColorVariable', "blue");
+    Session.set('backgroundColorVariable', "#0ECCAA");
 }
 // Put new value in the template dynamicStyle, see specimen.meteor.com.html file
 // we create the variable backrgoundColor, we prepare what will be sent to the template
@@ -20,6 +20,9 @@ Template.dynamicStyle.helpers({
 Template.layout.events = {
     'click .button-yellow': function(e){ 
         Session.set("backgroundColorVariable", "yellow");
+    },
+    'click .button-green': function(e){ 
+        Session.set("backgroundColorVariable", "#0ECCAA");
     },
     'click .button-blue': function(e){ 
         Session.set("backgroundColorVariable", "blue");
