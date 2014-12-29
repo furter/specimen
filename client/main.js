@@ -5,6 +5,9 @@ Session.set('commit', false);
 // in the template named ‘main’ (homepage) we create the variable ‘commit’
 // here we calculate the value:
 Template.main.helpers({
+    posts: function() {
+        return Posts.find({});
+    },
     commit: function () {
         // res is the object we get back from GitHub; we don’t need all of it
         var res = Session.get('commit');
@@ -13,9 +16,9 @@ Template.main.helpers({
         // if we’ve already gotten something from Github:
         if (res) {
             // the commit object is the one we will return with this function—
-            // the one that will be passed to template. 
+            // the one that will be passed to template.
             var commit = {};
-            
+
             var htmlFile = false;
             // In the info from GitHub, we find an array ‘files’, with info about
             // the files affected by the commit.

@@ -1,3 +1,5 @@
+Posts = new Meteor.Collection("posts");
+
 Router.configure({
     layoutTemplate: 'layout'
 });
@@ -6,6 +8,15 @@ Router.route('/', function () {
     Session.set('currentPage', 'main');
     this.render('main');
 });
+
+Router.route('/of/:slug', function () {
+  this.render('post', {
+    data: function () {
+      return Posts.findOne({slug: this.params.slug});
+    }
+  });
+});
+
 Router.route('/:slug', function () {
     // En fonction d’url,
     // on demande Meteor de faire un rendu du template qui correspond
@@ -34,7 +45,7 @@ var isExternal = function(href) {
 Meteor.startup(function() {
     // une fois que toute la structure de la page est là: action
     $(document).ready(function() {
-        
+
         // action: si c'est externe, on attribue à "ça" une target pour le lien qui est un nouvel onglet
          $("a[href]").each(
              function() {
@@ -43,10 +54,10 @@ Meteor.startup(function() {
                  }
              }
          );
-        
+
         // to change the title on the bar
         document.title = " O P E N F O N T S";
-        
+
         // écrire les trucs ici!! on est encore dans document ready
     });
 
