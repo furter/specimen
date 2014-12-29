@@ -1,7 +1,11 @@
 Posts = new Meteor.Collection("posts");
 
 Router.configure({
-    layoutTemplate: 'layout'
+    layoutTemplate: 'layout',
+    onAfterAction: function () {
+        // Every time we go to a new page, we want to be at the top of the page
+        $(window).scrollTop(0);
+    },
 });
 
 Router.route('/', function () {
@@ -46,7 +50,7 @@ Meteor.startup(function() {
     // une fois que toute la structure de la page est là: action
     $(document).ready(function() {
 
-        // action: si c'est externe, on attribue à "ça" une target pour le lien qui est un nouvel onglet
+         // action: si c'est externe, on attribue à "ça" une target pour le lien qui est un nouvel onglet
          $("a[href]").each(
              function() {
                  if (isExternal($(this).attr('href')) ) {
